@@ -32,7 +32,7 @@ router.get('/add', (req, res, next) => {
       title :'Add book',
       page: 'details',
       books:''
-   })
+   });
 
 });
 
@@ -69,13 +69,13 @@ router.get('/:id', (req, res, next) => {
 
      let id =req.params.id;
 
-     book.findById(id, (err,bookToEdit)=>  {
+     book.findById(id,{}, {}, (err,bookToEdit)=>  {
       if(err) 
       {
         console.error(err);
         res.end(err);
       }
-      res.render('/books/details', {title:'Edit',  books: bookToEdit})
+      res.render('/books/details', {title:'Edit', page: 'edit', books: bookToEdit})
 
      }) 
 
